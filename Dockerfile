@@ -2,7 +2,7 @@
 FROM debian
 MAINTAINER YupiRex
 RUN apt update && apt install -y \
-    ncurses-dev build-essential mercurial python3-dev shellcheck cmake golang-any git curl
+    ncurses-dev build-essential mercurial python3-dev shellcheck cmake golang-any git
 WORKDIR /tmp
 RUN git clone https://github.com/vim/vim.git
 WORKDIR /tmp/vim/src 
