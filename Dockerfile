@@ -1,8 +1,8 @@
-# Version: 0.0.2
+# Version: 0.0.3
 FROM debian
 MAINTAINER YupiRex
-RUN apt-get update && apt-get install -y \
-    ncurses-dev build-essential mercurial python3-dev shellcheck cmake git
+RUN apt update && apt install -y \
+    ncurses-dev build-essential mercurial python3-dev shellcheck cmake golang-any git curl
 WORKDIR /tmp
 RUN git clone https://github.com/vim/vim.git
 WORKDIR /tmp/vim/src 
@@ -24,5 +24,7 @@ RUN make
 RUN make install
 WORKDIR /
 RUN rm -rf /tmp/vim
+RUN apt purge -y \
+    ncurses-dev build-essential mercurial python3-dev shellcheck cmake golang-any git
 # Install vimrc config
 
