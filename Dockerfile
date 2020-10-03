@@ -22,7 +22,7 @@ RUN ./configure \
         --enable-xim \
         --enable-fontset \
         --enable-gui=gnome2 && \
-    make \
+    make && \
     make install
 WORKDIR /root
 RUN rm -rf /tmp/vim && \
