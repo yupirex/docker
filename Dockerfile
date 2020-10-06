@@ -2,8 +2,8 @@
 FROM debian
 MAINTAINER YupiRex
 #install bash-completion
-RUN apt update && apt install -y bash-completion 
-RUN sed -i '/# enable bash completion/,/^$/ {/enable bash/!s/^#//}' /etc/bash.bashrc
+RUN apt update && apt install -y bash-completion && \
+        sed -i '/# enable bash completion/,/^$/ {/enable bash/!s/^#//}' /etc/bash.bashrc
 #source /etc/bash.bashrc
 #download & compile vim 8.2
 WORKDIR /tmp
