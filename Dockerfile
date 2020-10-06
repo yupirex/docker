@@ -1,10 +1,16 @@
 # Version: 0.0.3
 FROM debian
 MAINTAINER YupiRex
+#install bash-completion
+RUN apt update && apt install -y bash-complepion && \
+    sed -i '/# enable bash completion/,/^$/ {/enable bash/!s/^#//}' /etc/bash.bashrc
+#source /etc/bash.bashrc
+#download & compile vim 8.2
 WORKDIR /tmp
-RUN apt update && \
-    apt install -y ncurses-dev build-essential mercurial && \
-    apt install -y python3-dev shellcheck cmake golang-any git curl bash-completion && \
+RUN apt install -y \
+        ncurses-dev build-essential mercurial && \
+    apt install -y \
+        python3-dev shellcheck cmake golang-any git curl && \
     git clone https://github.com/vim/vim.git
 WORKDIR /tmp/vim/src 
 RUN ./configure \
