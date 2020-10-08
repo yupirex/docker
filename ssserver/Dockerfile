@@ -9,6 +9,7 @@ RUN sed -i \
         /usr/local/lib/python2.7/dist-packages/shadowsocks/crypto/openssl.py
 ENTRYPOINT ["/usr/local/bin/ssserver"]
 
+RUN echo ok
 # Usage
 # pass=strongpasword; docker run --rm -d yupi/shadowsocks -k $pass
 # pass=strongpasword; docker run --rm -d yupi/shadowsocks -s 0.0.0.0 -p 8388 -k $pass -m aes-256-cfb
