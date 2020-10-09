@@ -32,12 +32,12 @@ RUN ./configure \
     make install
 #copy config
 WORKDIR /root
-git clone https://github.com/yupirex/vimrc.git
-ln -s /root/vimrc/.vim* /root
-curl -fLo /root/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-vim "+PlugInstall" "+qa!"    
-python3 /root/.vim/bundle/YouCompleteMe/install.py --all
+RUN git clone https://github.com/yupirex/vimrc.git
+RUN ln -s /root/vimrc/.vim* /root
+RUN curl -fLo /root/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+RUN vim "+PlugInstall" "+qa!"    
+RUN python3 /root/.vim/bundle/YouCompleteMe/install.py --all
 #RUN rm -rf /tmp/vim && \
 #    apt purge -y ncurses-dev build-essential mercurial
 # Install vimrc config
