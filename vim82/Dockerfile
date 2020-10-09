@@ -10,7 +10,7 @@ WORKDIR /tmp
 RUN apt install -y \
         ncurses-dev build-essential mercurial && \
     apt install -y \
-        python3-dev shellcheck cmake golang-any git curl && \
+        python3-dev shellcheck golang-any cmake git curl && \
     git clone https://github.com/vim/vim.git
 WORKDIR /tmp/vim/src 
 RUN ./configure \
@@ -30,7 +30,14 @@ RUN ./configure \
         --enable-gui=gnome2 && \
     make && \
     make install
+#copy config
 WORKDIR /root
-RUN rm -rf /tmp/vim && \
-    apt purge -y ncurses-dev build-essential mercurial
+git clone https://github.com/yupirex/vimrc.git
+ln -s /root/vimrc/.vim* /root
+curl -fLo /root/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+vim "+PlugInstall" "+qa!"    
+python3 /root/.vim/bundle/YouCompleteMe/install.py --all
+#RUN rm -rf /tmp/vim && \
+#    apt purge -y ncurses-dev build-essential mercurial
 # Install vimrc config
