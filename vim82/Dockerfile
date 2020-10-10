@@ -38,7 +38,7 @@ RUN git clone https://github.com/yupirex/vimrc.git && \
 RUN curl -fLo /root/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
     vim "+PlugInstall" "+qa!"    
-RUN (python3 /root/.vim/bundle/YouCompleteMe/install.py --all; set -e 0)
+RUN (python3 /root/.vim/bundle/YouCompleteMe/install.py --all || true)
 RUN rm -rf /tmp/vim && \
     apt purge -y ncurses-dev build-essential mercurial \
         golang-1.11-go cmake git
