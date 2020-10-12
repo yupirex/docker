@@ -42,3 +42,4 @@ RUN (python3 /root/.vim/bundle/YouCompleteMe/install.py --all || true)
 RUN rm -rf /tmp/vim && \
     apt purge -y ncurses-dev build-essential mercurial \
         golang-1.11-go cmake
+CMD git clone --mirror  https://github.com/yupirex/vimrc.git
